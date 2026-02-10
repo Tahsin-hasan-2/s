@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Tahsin Hasan Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fade/scale for hero heading */
+        @keyframes fadeScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fade-scale {
+            animation: fadeScale 1s ease forwards;
+        }
+
+        /* Fade-up for text */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+        }
+
+        /* Card hover glow */
+        .hover-glow {
+            transition: all 0.4s ease;
+        }
+
+        .hover-glow:hover {
+            transform: scale(1.05);
+            border-color: #ef4444;
+            /* red */
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+            z-index: 10;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px #ff00de, -2px -2px #00ffff;
+            }
+
+            25% {
+                text-shadow: -2px -2px #ff00de, 2px 2px #00ffff;
+            }
+
+            50% {
+                text-shadow: 2px -2px #ff00de, -2px 2px #00ffff;
+            }
+
+            75% {
+                text-shadow: -2px 2px #ff00de, 2px -2px #00ffff;
+            }
+
+            100% {
+                text-shadow: 2px 2px #ff00de, -2px -2px #00ffff;
+            }
+        }
+
+        .glitch-text:hover {
+            animation: glitch 0.3s infinite linear;
+        }
+
+        .mobile-link {
+            color: rgb(134 239 172);
+            /* text-green-300 */
+            font-size: 1.25rem;
+            /* text-xl */
+            font-weight: 700;
+            /* font-bold */
+            transition: color 0.3s ease;
+        }
+
+        .mobile-link:hover {
+            color: rgb(244 114 182);
+            /* hover:text-pink-400 */
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-[#0a0a0f] text-cyan-100 overflow-x-hidden selection:bg-pink-500/30 flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 relative bg-[#0a0a0f]/80 backdrop-blur-md border-b border-cyan-500/30">
+
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-400 cursor-pointer glitch-text">
+                &lt;PORTFOLIO/&gt;
+            </div>
+            <div class="hidden md:flex gap-8">
+                <a href="index.html"
+                    class="text-green-300 hover:text-pink-400 transition-colors duration-300 relative group font-bold">
+                    Home
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="about.html"
+                    class="text-green-300 hover:text-pink-400 transition-colors duration-300 relative group font-bold">
+                    About
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="project.html" class="text-green-300 font-bold relative group">
+                    Projects
+                    <!-- nderline feature for u -->
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-pink-500 transition-all duration-300"></span>
+                </a>
+                </a>
+                <a href="blog.html"
+                    class="text-green-300 hover:text-pink-400 transition-colors duration-300 relative group font-bold">
+                    Blog
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="contact.html"
+                    class="text-green-300 hover:text-pink-400 transition-colors duration-300 relative group font-bold">
+                    Contact
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-green-400 text-3xl">
+                ☰
+            </button>
+        </div>
+        <div id="mobile-menu"
+            class="hidden md:hidden flex flex-col text-center gap-6 py-6 bg-[#0a0a0f]/95 border-t border-cyan-500/30">
+
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="projects.html" class="mobile-link">Projects</a>
+            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[60vh] flex items-center justify-center pt-32 px-6">
+        <div class="text-center">
+            <h1
+                class="text-7xl font-bold mb-6 bg-gradient-to-r from-green-400 via-pink-400 to-purple-400 bg-clip-text text-transparent fade-scale">
+                My Projects
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto fade-up">
+                A showcase of my work - from concept to deployment
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Example Project Card -->
+                <div class="group relative hover-glow">
+                    <!-- Glow background -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-red-500/30 to-pink-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg blur-xl">
+                    </div>
+
+                    <!-- Card container -->
+                    <div
+                        class="relative bg-[#1a1a2e]/90 backdrop-blur-sm border border-cyan-500/30 rounded-lg p-6 h-full transition-all duration-300 hover:border-red-500">
+                        <!-- Image -->
+                        <div class="w-full h-40 mb-6 overflow-hidden rounded-lg">
+                            <img src="your-image.jpg" alt="Project preview"
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-400 mb-3 group-hover:text-pink-400 transition-colors">
+                            E-Commerce Platform
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Full-stack marketplace with real-time inventory and payment processing
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs text-cyan-300">React</span>
+                            <span
+                                class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs text-cyan-300">Node.js</span>
+                            <span
+                                class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs text-cyan-300">PostgreSQL</span>
+                            <span
+                                class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs text-cyan-300">Stripe</span>
+                        </div>
+                        <a href="https://example.com" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Repeat similar cards for other projects -->
+                <!-- ... -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-[#0f0f1a]">
+        <div class="max-w-4xl mx-auto text-center fade-up">
+            <h2 class="text-4xl font-bold mb-6 text-green-400">Want to collaborate?</h2>
+            <p class="text-xl text-gray-400 mb-8">
+                I'm always open to discussing new projects and opportunities
+            </p>
+            <a href="/contact"
+                class="inline-block px-8 py-4 bg-gradient-to-r from-green-500 to-pink-500 text-black font-bold rounded-lg hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] transition-all duration-300">
+                Get In Touch
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-cyan-500/30 bg-[#0a0a0f]/90 backdrop-blur-md py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2026 Tahsin. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+
+</body>
+
+</html>
