@@ -175,8 +175,14 @@
        <!-- <div id="mobile-menu"
     class="hidden md:hidden absolute top-full left-0 w-full flex flex-col text-center gap-6 py-6 bg-[#0a0a0f]/95 border-t border-cyan-500/30"> -->
 
+        <!-- <div id="mobile-menu"
+class="hidden fixed top-[72px] left-0 w-full z-40 flex flex-col text-center gap-6 py-6 bg-[#0a0a0f]/95 backdrop-blur-md border-t border-cyan-500/30"> -->
+
         <div id="mobile-menu"
-class="hidden fixed top-[72px] left-0 w-full z-40 flex flex-col text-center gap-6 py-6 bg-[#0a0a0f]/95 backdrop-blur-md border-t border-cyan-500/30">
+class="fixed top-[72px] left-0 w-full z-40 flex flex-col text-center gap-6 py-6
+bg-[#0a0a0f]/95 backdrop-blur-md border-t border-cyan-500/30
+opacity-0 pointer-events-none transition-all duration-300">
+
 
 
             <a href="index.html" class="mobile-link">Home</a>
@@ -368,7 +374,7 @@ class="hidden fixed top-[72px] left-0 w-full z-40 flex flex-col text-center gap-
         });
     </script> -->
 
-
+<!-- 
     <script>
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -379,7 +385,32 @@ class="hidden fixed top-[72px] left-0 w-full z-40 flex flex-col text-center gap-
         // lock body scroll when menu is open
         document.body.classList.toggle("overflow-hidden");
     });
+</script> -->
+
+
+
+
+    <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    let isOpen = false;
+
+    menuBtn.addEventListener("click", () => {
+        isOpen = !isOpen;
+
+        if (isOpen) {
+            mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+            mobileMenu.classList.add("opacity-100");
+            document.body.classList.add("overflow-hidden");
+        } else {
+            mobileMenu.classList.add("opacity-0", "pointer-events-none");
+            mobileMenu.classList.remove("opacity-100");
+            document.body.classList.remove("overflow-hidden");
+        }
+    });
 </script>
+
 
 </body>
 
