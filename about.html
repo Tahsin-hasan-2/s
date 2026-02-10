@@ -114,8 +114,16 @@
         }
 
         .mobile-link {
-            @apply text-green-300 hover:text-pink-400 text-xl font-bold transition;
-        }
+    color: rgb(134 239 172); /* text-green-300 */
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700; /* font-bold */
+    transition: color 0.3s ease;
+}
+
+.mobile-link:hover {
+    color: rgb(244 114 182); /* hover:text-pink-400 */
+}
+
     </style>
 </head>
 
@@ -167,7 +175,7 @@
 
             <a href="index.html" class="mobile-link">Home</a>
             <a href="about.html" class="mobile-link">About</a>
-            <a href="projects.html" class="mobile-link">Projects</a>
+            <a href="project.html" class="mobile-link">Projects</a>
             <a href="blog.html" class="mobile-link">Blog</a>
             <a href="contact.html" class="mobile-link">Contact</a>
 
