@@ -77,11 +77,13 @@
         .glitch-text:hover {
             animation: glitch 0.3s infinite linear;
         }
+
+        .mobile-link {
+    @apply text-green-300 hover:text-pink-400 text-xl font-bold transition;
+}
  
     </style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="css/style.css">
+
 
 </head>
 
@@ -125,26 +127,24 @@
                 </a>
             </div>
             <!-- Mobile Menu Button -->
-        
-<!-- Mobile Button -->
-<button id="menu-btn" class="md:hidden text-green-400 text-3xl">
-☰
-</button>
+ <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-green-400 text-3xl">
+            ☰
+        </button>
 
-</div>
+    </div>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu"
-class="hidden md:hidden flex flex-col items-center gap-6 py-6 bg-[#0a0a0f] border-t border-cyan-500/30">
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="hidden md:hidden flex flex-col text-center gap-6 py-6 bg-[#0a0a0f]/95 border-t border-cyan-500/30">
 
-<a href="index.html" class="mobile-link">Home</a>
-<a href="about.html" class="mobile-link">About</a>
-<a href="projects.html" class="mobile-link">Projects</a>
-<a href="blog.html" class="mobile-link">Blog</a>
-<a href="contact.html" class="mobile-link">Contact</a>
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="about.html" class="mobile-link">About</a>
+        <a href="projects.html" class="mobile-link">Projects</a>
+        <a href="blog.html" class="mobile-link">Blog</a>
+        <a href="contact.html" class="mobile-link">Contact</a>
 
-</div>
-
+    </div>
     </nav>
     
 
@@ -280,8 +280,14 @@ class="hidden md:hidden flex flex-col items-center gap-6 py-6 bg-[#0a0a0f] borde
         <p> © 2026 Tahsin </p>
     </footer>
 
-    <script src="js/script.js"></script>
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+</script>
 
     
 
