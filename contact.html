@@ -79,7 +79,7 @@
             animation: glitch 0.3s infinite linear;
         }
 
-        .mobile-link {
+         #mobile-menu {
             color: rgb(134 239 172);
             /* text-green-300 */
             font-size: 1.25rem;
@@ -89,7 +89,7 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-link:hover {
+        .mobile-menu:hover {
             color: rgb(244 114 182);
             /* hover:text-pink-400 */
         }
@@ -145,14 +145,12 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu"
-            class="hidden md:hidden absolute top-full left-0 w-full flex flex-col text-center gap-6 py-6 bg-[#0a0a0f]/95 border-t border-cyan-500/30">
-
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="about.html" class="mobile-link">About</a>
-            <a href="project.html" class="mobile-link">Projects</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="contact.html" class="mobile-link">Contact</a>
-
+            class="hidden absolute top-20 left-0 w-full bg-[#0a0a0f] border-b border-cyan-500/30 py-6 flex flex-col items-center gap-6 shadow-2xl">
+            <a href="index.html" class="text-green-300 text-xl font-bold">Home</a>
+            <a href="about.html" class="text-green-400 text-xl font-bold">About</a>
+            <a href="project.html" class="text-green-300 text-xl font-bold">Projects</a>
+            <a href="blog.html" class="text-green-300 text-xl font-bold">Blog</a>
+            <a href="contact.html" class="text-pink-300 text-xl font-bold">Contact</a>
         </div>
     </nav>
     <section class="min-h-[50vh] flex items-center justify-center pt-20 px-6">
