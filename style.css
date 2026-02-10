@@ -1,0 +1,94 @@
+/* animations.css */
+
+/* --- BASE CONFIG --- */
+.reveal-on-scroll {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+
+/* --- DIRECTIONS --- */
+
+/* Slide from Left */
+.reveal-left {
+    transform: translateX(-100px);
+}
+
+/* Slide from Right */
+.reveal-right {
+    transform: translateX(100px);
+}
+
+/* Slide from Up (Traditional "Drop") */
+.reveal-up {
+    transform: translateY(-100px);
+}
+
+/* Slide from Down (Traditional "Rise") */
+.reveal-down {
+    transform: translateY(100px);
+}
+
+/* Zoom In Effect */
+.reveal-zoom {
+    transform: scale(0.8);
+}
+
+
+/* --- THE TRIGGER --- */
+/* When JS adds .is-active, everything returns to its natural position */
+.reveal-on-scroll.is-active {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
+}
+
+/* Mobile Menu Styles */
+#mobile-menu.active {
+    transform: translateX(0);
+    /* Slides the menu in */
+}
+
+/* Prevent scrolling when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: black;
+    border-bottom: 2px solid #00ff88;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    color: #00ff88;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #00ff88;
+    font-family: monospace;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+    color: #ff2e88;
+    text-shadow: 0 0 10px #ff2e88;
+}
