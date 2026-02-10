@@ -50,4 +50,3 @@ document.addEventListener("DOMContentLoaded", () => {
             body.classList.remove('menu-open');
         });
     });
-});
