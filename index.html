@@ -114,21 +114,34 @@
         }
 
         /* Only applies the transition and active state on mobile (screens smaller than 768px) */
-        @media (max-width: 767px) {
+       @media (max-width: 767px) {
+    /* Base styles for the cards to handle the glow transition */
+    .permanent-glow {
+        transition: all 0.7s ease-out;
+        position: relative;
+    }
 
-            .hover-glow,
-            .permanent-glow {
-                transition: transform 0.7s ease-out, box-shadow 0.7s ease-out;
-            }
+    /* The "Super-Glow" state when the card enters the middle of the screen */
+    .mobile-hover-active {
+        transform: scale(1.06) !important;
+        
+        /* 1. Heavy Outer Glow (Multiple layers for thickness) */
+        box-shadow: 
+            0 0 20px rgba(255, 0, 0, 0.8), 
+            0 0 30px rgba(255, 0, 0, 0.6), 
+            0 0 50px rgba(255, 0, 0, 0.4) !important;
 
-            .mobile-hover-active {
-                transform: scale(1.1) !important;
-                /* Increased scale for better visibility on mobile */
-                border-color: #ff0000 !important;
-                box-shadow: 0 0 40px rgba(255, 0, 0, 0.7) !important;
-                z-index: 20;
-            }
-        }
+        /* 2. Inner Glow (Makes the inside of the box feel lit up) */
+        background: rgba(255, 0, 0, 0.15) !important; 
+        
+        /* 3. Border Glow */
+        border-color: #ff0000 !important;
+        border-width: 2px !important;
+
+        /* 4. Ensure it floats above everything else */
+        z-index: 50;
+    }
+}
     </style>
 
 
@@ -347,32 +360,31 @@
     <!-- for mobile hover effect -->
 
 
+<script>
+    if (window.innerWidth < 768) {
+        const options = {
+            root: null,
+            // Widened the margin (-25%) so the glow "pops" earlier 
+            // and stays glowing for longer as you scroll past.
+            rootMargin: '-25% 0px -25% 0px', 
+            threshold: 0.1
+        };
 
-    <script>
-        // Only run this logic if the screen width is mobile-sized
-        if (window.innerWidth < 768) {
-            const options = {
-                root: null,
-                // Adjust these percentages to change "where" on the screen it triggers
-                rootMargin: '-45% 0px -45% 0px',
-                threshold: 0
-            };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('mobile-hover-active');
+                } else {
+                    entry.target.classList.remove('mobile-hover-active');
+                }
+            });
+        }, options);
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('mobile-hover-active');
-                    } else {
-                        entry.target.classList.remove('mobile-hover-active');
-                    }
-                });
-            }, options);
-
-            // Apply to your specific cards
-            const targets = document.querySelectorAll('.hover-glow, .permanent-glow');
-            targets.forEach(target => observer.observe(target));
-        }
-    </script>
+        // This ensures every card with these classes gets the effect
+        const cards = document.querySelectorAll(' .permanent-glow');
+        cards.forEach(card => observer.observe(card));
+    }
+</script>
 
 
 
