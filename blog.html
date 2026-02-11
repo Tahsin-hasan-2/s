@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Tahsin Hasan Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* --- YOUR PORTFOLIO ANIMATIONS --- */
+
+        @keyframes colorCycle {
+            0% {
+                color: #ec4899;
+            }
+
+            25% {
+                color: #22d3ee;
+            }
+
+            50% {
+                color: #a855f7;
+            }
+
+            75% {
+                color: #facc15;
+            }
+
+            100% {
+                color: #ec4899;
+            }
+        }
+
+        @keyframes neonCycle {
+            0% {
+                color: #f90505;
+                text-shadow: 0 0 10px #f90505, 0 0 20px #f90505, 0 0 40px #f90505;
+            }
+
+            25% {
+                color: #22d3ee;
+                text-shadow: 0 0 10px #22d3ee, 0 0 20px #22d3ee, 0 0 40px #22d3ee;
+            }
+
+            50% {
+                color: #03d54c;
+                text-shadow: 0 0 10px #03d54c, 0 0 20px #03d54c, 0 0 40px #03d54c;
+            }
+
+            75% {
+                color: #2205f8;
+                text-shadow: 0 0 10px #2205f8, 0 0 20px #2205f8, 0 0 40px #2205f8;
+            }
+
+            100% {
+                color: #f90505;
+                text-shadow: 0 0 10px #f90505, 0 0 20px #f90505, 0 0 40px #f90505;
+            }
+        }
+
+        .link-highlight {
+            color: #f90505;
+            /* Pink color */
+            text-decoration: underline;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+            /* Neon Glow */
+        }
+
+        .link-highlight:hover {
+            color: #08dd28;
+            /* Switches to Cyan on hover */
+            text-shadow: 0 0 12px #08dd28;
+            text-decoration: none;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px #ff00de, -2px -2px #00ffff;
+            }
+
+            25% {
+                text-shadow: -2px -2px #ff00de, 2px 2px #00ffff;
+            }
+
+            50% {
+                text-shadow: 2px -2px #ff00de, -2px 2px #00ffff;
+            }
+
+            75% {
+                text-shadow: -2px 2px #ff00de, 2px -2px #00ffff;
+            }
+
+            100% {
+                text-shadow: 2px 2px #ff00de, -2px -2px #00ffff;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .neon-cycle {
+            animation: neonCycle 8s infinite alternate;
+        }
+
+        .color-changing {
+            animation: colorCycle 6s infinite alternate;
+        }
+
+        .glitch-text {
+            animation: glitch 0.3s infinite linear;
+        }
+
+
+
+        .post-card {
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Smooth height transition for dynamic content */
+        .content-transition {
+            transition: max-height 0.5s ease-in-out, opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #22d3ee33;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22d3ee66;
+        }
+
+        #mobile-menu {
+            color: rgb(134 239 172);
+            /* text-green-300 */
+            font-size: 1.25rem;
+            /* text-xl */
+            font-weight: 700;
+            /* font-bold */
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu:hover {
+            color: rgb(233, 4, 4);
+            /* hover:text-pink-400 */
+        }
+
+
+        .permanent-glow {
+            /* 1. The Border: Solid neon red */
+            border: 2px solid #ff0000;
+
+            /* 2. The Spread: Layered to be as wide as the hover effect was */
+            box-shadow:
+                0 0 10px #ff0000,
+                /* Bright core near border */
+                0 0 20px rgba(255, 0, 0, 0.6),
+                /* Middle spread */
+                0 0 30px rgba(255, 0, 0, 0.4);
+            /* Large outer atmospheric glow */
+
+            /* 3. Consistency: Ensure background is dark so glow pops */
+            background: rgba(26, 26, 46, 0.8);
+            transition: all 0.4s ease;
+            border-radius: 1rem;
+            /* Rounded corners */
+        }
+
+        /* Optional interaction: Just a slight scale since it's already glowing max */
+        .permanent-glow:hover {
+            transform: scale(1.03);
+            box-shadow:
+                0 0 20px #ff0000,
+                0 0 30px rgba(255, 0, 0, 0.7),
+                0 0 50px rgba(255, 0, 0, 0.5);
+            z-index: 20;
+            /* Add this */
+            position: relative;
+            /* Add this */
+        }
+
+        /* Only applies the transition and active state on mobile (screens smaller than 768px) */
+        /* Only applies the transition and active state on mobile (screens smaller than 768px) */
+        @media (max-width: 767px) {
+
+            /* Base style consistency */
+            .hover-glow,
+            .permanent-glow {
+                transition: all 0.3s ease-out;
+                background: #1a1a2e !important;
+                /* Forces background to stay dark */
+            }
+
+            .mobile-hover-active {
+                transform: scale(1.05) !important;
+
+                /* 1. Remove background tint to keep text clear */
+                background: #1a1a2e !important;
+
+                /* 2. Massive Neon Glow (Pure Outer Shadow) */
+                /* We use 4 layers to make it look thick like your screenshot */
+                box-shadow:
+                    0 0 10px #ff0000,
+                    0 0 25px #ff0000,
+                    0 0 50px rgba(255, 0, 0, 0.7),
+                    0 0 60px rgba(255, 0, 0, 0.4) !important;
+
+                border-color: #ff0000 !important;
+                z-index: 50;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-[#0a0a0f] text-cyan-100 overflow-x-hidden selection:bg-pink-500/30">
+
+    <!-- <nav class="fixed top-0 w-full z-50 relative bg-[#0a0a0f]/80 backdrop-blur-md border-b border-cyan-500/30"> -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0a0a0f]/80 backdrop-blur-md border-b border-green-500">
+
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-400 cursor-pointer glitch-text">
+                &lt print("PORTFOLIO") &gt;
+            </div>
+            <div class="hidden md:flex gap-8">
+                <a href="index.html"
+                    class="text-green-300 hover:text-red-400 transition-colors duration-300 relative group font-bold">
+                    Home
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="about.html"
+                    class="text-green-300 hover:text-red-400 transition-colors duration-300 relative group font-bold">
+                    About
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="project.html"
+                    class="text-green-300 hover:text-red-400 transition-colors duration-300 relative group font-bold">
+                    Projects
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <!-- nderline feature for u -->
+                <a href="blog.html"
+                    class="text-green-300 hover:text-red-400 transition-colors duration-300 relative group font-bold">
+                    Blog
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-red-500 transition-all duration-300"></span>
+                </a>
+                <a href="contact.html"
+                    class="text-green-300 hover:text-red-400 transition-colors duration-300 relative group font-bold">
+                    Contact
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-green-400 text-3xl">
+                ☰
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-20 left-0 w-full bg-[#0a0a0f] border-b border-cyan-500/30 py-6 flex flex-col items-center gap-6 shadow-2xl">
+            <a href="index.html" class="text-green-400 text-xl font-bold">Home</a>
+            <a href="about.html" class="text-green-400 text-xl font-bold">About</a>
+            <a href="project.html" class="text-green-400 text-xl font-bold">Projects</a>
+            <a href="blog.html" class="text-red-400 text-xl font-bold">Blog</a>
+            <a href="contact.html" class="text-green-400 text-xl font-bold">Contact</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-[40vh] flex items-center justify-center pt-32 px-6">
+        <div class="text-center max-w-3xl">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 neon-cycle">
+                Blog
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Deciphering code, career, and the spiritual journey.
+            </p>
+        </div>
+    </section>
+    <br>
+    <br>
+    <section class="px-6 mb-12">
+        <div class="max-w-4xl mx-auto flex gap-4 justify-center rounded-lg">
+            <button id="btn-career" onclick="switchTab('career')"
+                class="px-8 py-4 rounded-lg font-bold transition-all duration-300 bg-red-500 text-black shadow-[0_0_20px_rgba(34,211,238,0.5)]">
+                Career Focus
+            </button>
+            <button id="btn-spiritual" onclick="switchTab('spiritual')"
+                class="px-8 py-4 rounded-lg font-bold transition-all duration-300 bg-[#1a1a2e] text-green-400 border border-green-500/30 hover:border-green-500/50 ">
+                Spiritual
+            </button>
+        </div>
+    </section>
+
+    <section class="pb-32 px-6">
+        <div id="posts-container" class="max-w-4xl mx-auto space-y-10 ">
+            <!-- Dynamic blog posts will be injected here -->
+        </div>
+    </section>
+
+
+
+
+
+    <script>
+        // --- BLOG DATA ---
+        const careerPosts = [
+
+            {
+                title: "Building Scalable Microservices",
+                date: "Jan 15, 2026",
+                fullContent: "Architecting systems that breathe under pressure requires more than just code; it requires a mindset shift. In a microservices world, we prioritize decoupling and scalability. By using containerization and robust orchestration like Kubernetes, we ensure that individual components can scale independently. However, this introduces complexity in distributed tracing and data consistency. To master this, one must understand the CAP theorem and the trade-offs between availability and consistency. Imagine a system handling millions of concurrent requests—this is where circuit breakers and load balancers become your best friends. We also dive deep into event-driven architectures using Kafka to ensure asynchronous communication doesn't become a bottleneck. The future of scalability is not just bigger servers, but smarter distribution."
+            },
+            {
+                title: "The TypeScript Advantage",
+                date: "Jan 05, 2026",
+                fullContent: "TypeScript  <a class='link-highlight' href='https://www.google.com'>google</a> has moved from being a luxury to a necessity for enterprise-grade applications. By providing static typing, it allows developers to catch errors at compile time rather than runtime. This leads to more predictable code and significantly easier refactoring. Whether you are defining complex interfaces or leveraging generics for reusable components, TypeScript acts as a safety net. It improves the developer experience with superior IDE support and autocompletion. As projects grow in size, the 'any' type becomes your enemy, and strict null checks become your savior. It's not just about adding types; it's about designing your data flow in a way that the compiler can verify every step of the journey."
+            }
+        ];
+
+        const spiritualPosts = [
+            {
+                title: "Finding Zen in the Terminal",
+                date: "Jan 12, 2026",
+                fullContent: "The chaos of a debugging session can often mirror the chaos of the mind. In the fast-paced tech world, 'Zen' isn't about escaping work, but finding a flow state within it. When a bug persists, our immediate reaction is frustration. Mindfulness teaches us to observe that frustration without letting it drive our actions. By treating each line of code as a meditative practice, we reduce burnout and increase creativity. A clear terminal reflects a clear mind. We explore techniques like deep work, pomodoro for focus, and the importance of stepping away from the screen to gain perspective. Tech is a tool; our consciousness is the architect."
+            },
+            {
+                title: "The Art of Letting Go",
+                date: "Jan 03, 2026",
+                fullContent: "In software development, we often become attached to our code. We spend hours perfecting a function only to realize the requirements have changed and it must be deleted. This is the ultimate lesson in impermanence. Letting go of 'your' code allows for better collaboration and a more agile mindset. It shifts the focus from individual ego to collective project success. Growth occurs when we stop defending our old solutions and start embracing the need for evolution. In life, as in Git, sometimes the best move is a 'hard reset' to clear the path for something better."
+            }
+        ];
+
+        // --- DYNAMIC LOGIC ---
+
+        function renderPosts(category) {
+            const container = document.getElementById('posts-container');
+            const posts = category === 'career' ? careerPosts : spiritualPosts;
+
+            container.innerHTML = ''; // Clear container
+
+            posts.forEach((post, index) => {
+                const shortText = post.fullContent.slice(0, 150) + "...";
+
+                const article = document.createElement('div');
+
+
+                // article.className = 'relative bg-[#1a1a2e]/50 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-8 hover-glow post-card transition-all duration-500 hover-glow';
+
+
+                article.className = 'relative p-8 post-card permanent-glow';
+
+
+                article.id = `post-card-${index}`;
+                article.style.animationDelay = `${index * 0.1}s`;
+
+                article.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl md:text-3xl font-bold text-green-300">${post.title}</h3>
+                        <span class="text-pink-500 text-sm font-mono whitespace-nowrap ml-4">${post.date}</span>
+                    </div>
+                    
+                    <p id="content-${index}" class="text-gray-300 leading-relaxed mb-6 transition-all duration-300">
+                        ${shortText}
+                    </p>
+                    
+                    <button 
+                        onclick="toggleReadMore(${index}, '${category}')" 
+                        id="btn-read-${index}"
+                        class="text-green-400 font-bold flex items-center gap-2 hover:text-pink-400 transition-colors focus:outline-none group"
+                    >
+                        <span id="btn-text-${index}">Read DataStream</span> 
+                        <span class="group-hover:translate-x-1 transition-transform" id="btn-icon-${index}">→</span>
+                    </button>
+                `;
+                container.appendChild(article);
+            });
+        }
+
+        // function toggleReadMore(index, category) {
+        //     const posts = category === 'career' ? careerPosts : spiritualPosts;
+        //     const textElement = document.getElementById(`content-${index}`);
+        //     const btnText = document.getElementById(`btn-text-${index}`);
+        //     const btnIcon = document.getElementById(`btn-icon-${index}`);
+        //     const btnRef = document.getElementById(`btn-read-${index}`);
+        //     const postData = posts[index];
+
+        //     const isCollapsed = btnText.innerText === "Read DataStream";
+
+        //     if (isCollapsed) {
+        //         // --- EXPAND ---
+        //         textElement.style.opacity = "0";
+        //         setTimeout(() => {
+        //             textElement.innerText = postData.fullContent;
+        //             textElement.style.opacity = "1";
+        //         }, 150);
+
+        //         btnText.innerText = "Read Less";
+        //         btnIcon.innerText = "←";
+        //         btnRef.classList.replace('text-cyan-400', 'text-pink-400');
+        //     } else {
+        //         // --- COLLAPSE ---
+        //         textElement.style.opacity = "0";
+        //         setTimeout(() => {
+        //             textElement.innerText = postData.fullContent.slice(0, 150) + "...";
+        //             textElement.style.opacity = "1";
+        //             // Smooth scroll back to the top of the card
+        //             document.getElementById(`post-card-${index}`).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        //         }, 150);
+
+        //         btnText.innerText = "Read DataStream";
+        //         btnIcon.innerText = "→";
+        //         btnRef.classList.replace('text-pink-400', 'text-cyan-400');
+        //     }
+        // }
+        function toggleReadMore(index, category) {
+            const posts = category === 'career' ? careerPosts : spiritualPosts;
+            const textElement = document.getElementById(`content-${index}`);
+            const btnText = document.getElementById(`btn-text-${index}`);
+            const postData = posts[index];
+
+            if (btnText.innerText === "Read DataStream") {
+                // USE innerHTML TO RENDER THE LINK
+                textElement.innerHTML = postData.fullContent;
+                btnText.innerText = "Read Less";
+            } else {
+                // USE innerHTML HERE TOO
+                textElement.innerHTML = postData.fullContent.slice(0, 150) + "...";
+                btnText.innerText = "Read DataStream";
+            }
+        }
+
+        function switchTab(category) {
+            const careerBtn = document.getElementById('btn-career');
+            const spiritualBtn = document.getElementById('btn-spiritual');
+
+            if (category === 'career') {
+                careerBtn.className = "px-8 py-4 rounded-lg font-bold transition-all duration-300 bg-red-500 text-black shadow-[0_0_20px_rgba(255,0,0,0.5)]";
+                spiritualBtn.className = "px-8 py-4 rounded-lg font-bold transition-all duration-300 bg-[#1a1a2e] text-green-400 border border-green-500 hover:border-green-500";
+            } else {
+                spiritualBtn.className = "px-8 py-4 rounded-lg font-bold transition-all duration-300 bg-green-500 text-black shadow-[0_0_20px_rgba(34,211,238,0.5)]";
+                careerBtn.className = "px-8 py-4 rounded-lg font-bold transition-all duration-300 bg-[#1a1a2e] text-red-400 border border-red-500 hover:border-red-500";
+            }
+            renderPosts(category);
+        }
+
+        // --- INITIAL LOAD ---
+        window.onload = () => renderPosts('career');
+    </script>
+    <footer class="py-10 text-center bg-[#0a0a0f] border-t border-cyan-500/30">
+        <p> © 2026 Tahsin Hasan | Built in the Matrix </p>
+    </footer>
+
+
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+    <!-- for mobile hover effect -->
+
+
+
+    <script>
+        if (window.innerWidth < 768) {
+            const options = {
+                root: null,
+                // Widened the margin (-25%) so the glow "pops" earlier 
+                // and stays glowing for longer as you scroll past.
+                rootMargin: '-25% 0px -25% 0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('mobile-hover-active');
+                    } else {
+                        entry.target.classList.remove('mobile-hover-active');
+                    }
+                });
+            }, options);
+
+            // This ensures every card with these classes gets the effect
+            const cards = document.querySelectorAll(' .permanent-glow');
+            cards.forEach(card => observer.observe(card));
+        }
+    </script>
+
+
+</body>
+
+</html>
