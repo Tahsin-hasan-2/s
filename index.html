@@ -115,30 +115,27 @@
 
         /* Only applies the transition and active state on mobile (screens smaller than 768px) */
        @media (max-width: 767px) {
-    /* Base styles for the cards to handle the glow transition */
-    .permanent-glow {
-        transition: all 0.7s ease-out;
-        position: relative;
+    /* Base style consistency */
+    .hover-glow, .permanent-glow {
+        transition: all 0.3s ease-out;
+        background: #1a1a2e !important; /* Forces background to stay dark */
     }
 
-    /* The "Super-Glow" state when the card enters the middle of the screen */
     .mobile-hover-active {
-        transform: scale(1.06) !important;
+        transform: scale(1.05) !important;
         
-        /* 1. Heavy Outer Glow (Multiple layers for thickness) */
+        /* 1. Remove background tint to keep text clear */
+        background: #1a1a2e !important; 
+
+        /* 2. Massive Neon Glow (Pure Outer Shadow) */
+        /* We use 4 layers to make it look thick like your screenshot */
         box-shadow: 
-            0 0 20px rgba(255, 0, 0, 0.8), 
-            0 0 30px rgba(255, 0, 0, 0.6), 
-            0 0 40px rgba(255, 0, 0, 0.4) !important;
+            0 0 10px #ff0000, 
+            0 0 25px #ff0000, 
+            0 0 50px rgba(255, 0, 0, 0.7),
+            0 0 60px rgba(255, 0, 0, 0.4) !important;
 
-        /* /* 2. Inner Glow (Makes the inside of the box feel lit up) */
-        background: rgba(255, 0, 0, 0.15) !important;  */
-        
-        /* 3. Border Glow */
         border-color: #ff0000 !important;
-        border-width: 2px !important;
-
-        /* 4. Ensure it floats above everything else */
         z-index: 50;
     }
 }
@@ -367,7 +364,7 @@
             // Widened the margin (-25%) so the glow "pops" earlier 
             // and stays glowing for longer as you scroll past.
             rootMargin: '-25% 0px -25% 0px', 
-            threshold: 0.1
+            threshold: 0.5
         };
 
         const observer = new IntersectionObserver((entries) => {
