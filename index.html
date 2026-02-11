@@ -114,32 +114,36 @@
         }
 
         /* Only applies the transition and active state on mobile (screens smaller than 768px) */
-       @media (max-width: 767px) {
-    /* Base style consistency */
-     .permanent-glow {
-        transition: all 0.3s ease-out;
-        background: #1a1a2e !important; /* Forces background to stay dark */
-         z-index: 20;
-    }
+        /* Only applies the transition and active state on mobile (screens smaller than 768px) */
+        @media (max-width: 767px) {
 
-    .mobile-hover-active {
-        transform: scale(1.05) !important;
-        
-        /* 1. Remove background tint to keep text clear */
-        background: #1a1a2e !important; 
+            /* Base style consistency */
+            .hover-glow,
+            .permanent-glow {
+                transition: all 0.3s ease-out;
+                background: #1a1a2e !important;
+                /* Forces background to stay dark */
+                z-index: 10;
+            }
 
-        /* 2. Massive Neon Glow (Pure Outer Shadow) */
-        /* We use 4 layers to make it look thick like your screenshot */
-        box-shadow: 
-            0 0 10px #ff0000, 
-            0 0 25px #ff0000, 
-            0 0 50px rgba(255, 0, 0, 0.7),
-            0 0 60px rgba(255, 0, 0, 0.4) !important;
+            .mobile-hover-active {
+                transform: scale(1.05) !important;
 
-        border-color: #ff0000 !important;
-        z-index: 20;
-    }
-}
+                /* 1. Remove background tint to keep text clear */
+                background: #1a1a2e !important;
+
+                /* 2. Massive Neon Glow (Pure Outer Shadow) */
+                /* We use 4 layers to make it look thick like your screenshot */
+                box-shadow:
+                    0 0 10px #ff0000,
+                    0 0 25px #ff0000,
+                    0 0 50px rgba(255, 0, 0, 0.7),
+                    0 0 60px rgba(255, 0, 0, 0.4) !important;
+
+                border-color: #ff0000 !important;
+               z-index: 20 !important;
+            }
+        }
     </style>
 
 
@@ -148,11 +152,12 @@
 <body class="min-h-screen bg-[#0a0a0f] text-cyan-100 overflow-x-hidden selection:bg-pink-500/30">
 
     <!-- Navbar -->
-    <!-- <nav class="fixed top-0 w-full z-[100] bg-[#0a0a0f]/80 backdrop-blur-md border-b border-green-500"> -->
-        <nav class="fixed top-0 w-full z-[100] relative bg-[#0a0a0f]/80 backdrop-blur-md border-b border-cyan-500/30">
+    <nav class="fixed top-0 w-full z-[100] bg-[#0a0a0f]/80 backdrop-blur-md border-b border-green-500">
+        <!-- <nav class="fixed top-0 w-full z-50 relative bg-[#0a0a0f]/80 backdrop-blur-md border-b border-cyan-500/30"> -->
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-green-400 cursor-pointer glitch-text">
-                &lt print("PORTFOLIO") &gt;
+                &lt [+] Initializing Portfolio..
+                &gt;
 
             </div>
             <div class="hidden md:flex gap-8">
@@ -195,10 +200,8 @@
 
         </div>
 
-        <!-- <div id="mobile-menu"
-            class="hidden absolute top-20 left-0 w-full bg-[#0a0a0f] border-b border-cyan-500/30 py-6 flex flex-col items-center gap-6 shadow-2xl"> -->
-
-        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full z-50 bg-[#0a0a0f] ...">
+        <div id="mobile-menu"
+            class="hidden absolute top-20 left-0 w-full bg-[#0a0a0f] border-b border-cyan-500/30 py-6 flex flex-col items-center gap-6 shadow-2xl z-90">
             <a href="index.html" class="text-pink-300 text-xl font-bold">Home</a>
             <a href="about.html" class="text-green-400 text-xl font-bold">About</a>
             <a href="project.html" class="text-green-300 text-xl font-bold">Projects</a>
@@ -316,7 +319,7 @@
                     </div>
                     <div
                         class="relative bg-[#1a1a2e]/50 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-8 transition-all duration-500 group-hover:border-pink-500/50">
-                        <div class="text-5xl text-cyan-400 mb-6">&lt;&gt;</div>
+                        <div class="text-5xl text-red-400 mb-6">&lt;&gt;</div>
                         <h3 class="text-2xl font-bold text-green-400 mb-4">Clean Code</h3>
                         <p class="text-gray-300">Writing maintainable, scalable, and efficient code that stands the test
                             of time.</p>
@@ -329,7 +332,7 @@
                     </div>
                     <div
                         class="relative bg-[#1a1a2e]/50 backdrop-blur-md border  rounded-2xl p-8 transition-all duration-500 group-hover permanent-glow">
-                        ">
+
                         <div class="text-5xl text-red-400 mb-6">⚡</div>
                         <h3 class="text-2xl font-bold text-green-400 mb-4">Innovation</h3>
                         <p class="text-gray-300">Constantly exploring
@@ -360,31 +363,32 @@
     <!-- for mobile hover effect -->
 
 
-<script>
-    if (window.innerWidth < 768) {
-        const options = {
-            root: null,
-            // Widened the margin (-25%) so the glow "pops" earlier 
-            // and stays glowing for longer as you scroll past.
-            rootMargin: '-25% 0px -25% 0px', 
-            threshold: 0.5
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('mobile-hover-active');
-                } else {
-                    entry.target.classList.remove('mobile-hover-active');
-                }
-            });
-        }, options);
+    <script>
+        if (window.innerWidth < 768) {
+            const options = {
+                root: null,
+                // Widened the margin (-25%) so the glow "pops" earlier 
+                // and stays glowing for longer as you scroll past.
+                rootMargin: '-25% 0px -25% 0px',
+                threshold: 0.5
+            };
 
-        // This ensures every card with these classes gets the effect
-        const cards = document.querySelectorAll(' .permanent-glow');
-        cards.forEach(card => observer.observe(card));
-    }
-</script>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('mobile-hover-active');
+                    } else {
+                        entry.target.classList.remove('mobile-hover-active');
+                    }
+                });
+            }, options);
+
+            // This ensures every card with these classes gets the effect
+            const cards = document.querySelectorAll(' .permanent-glow');
+            cards.forEach(card => observer.observe(card));
+        }
+    </script>
 
 
 
