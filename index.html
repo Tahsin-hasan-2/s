@@ -116,9 +116,10 @@
         /* Only applies the transition and active state on mobile (screens smaller than 768px) */
        @media (max-width: 767px) {
     /* Base style consistency */
-    .hover-glow, .permanent-glow {
+     .permanent-glow {
         transition: all 0.3s ease-out;
         background: #1a1a2e !important; /* Forces background to stay dark */
+         z-index: 20;
     }
 
     .mobile-hover-active {
@@ -136,7 +137,7 @@
             0 0 60px rgba(255, 0, 0, 0.4) !important;
 
         border-color: #ff0000 !important;
-        z-index: 50;
+        z-index: 20;
     }
 }
     </style>
@@ -147,7 +148,7 @@
 <body class="min-h-screen bg-[#0a0a0f] text-cyan-100 overflow-x-hidden selection:bg-pink-500/30">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-[#0a0a0f]/80 backdrop-blur-md border-b border-green-500">
+    <nav class="fixed top-0 w-full z-[100] bg-[#0a0a0f]/80 backdrop-blur-md border-b border-green-500">
         <!-- <nav class="fixed top-0 w-full z-50 relative bg-[#0a0a0f]/80 backdrop-blur-md border-b border-cyan-500/30"> -->
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-green-400 cursor-pointer glitch-text">
@@ -194,8 +195,10 @@
 
         </div>
 
-        <div id="mobile-menu"
-            class="hidden absolute top-20 left-0 w-full bg-[#0a0a0f] border-b border-cyan-500/30 py-6 flex flex-col items-center gap-6 shadow-2xl">
+        <!-- <div id="mobile-menu"
+            class="hidden absolute top-20 left-0 w-full bg-[#0a0a0f] border-b border-cyan-500/30 py-6 flex flex-col items-center gap-6 shadow-2xl"> -->
+
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full z-50 bg-[#0a0a0f] ...">
             <a href="index.html" class="text-pink-300 text-xl font-bold">Home</a>
             <a href="about.html" class="text-green-400 text-xl font-bold">About</a>
             <a href="project.html" class="text-green-300 text-xl font-bold">Projects</a>
